@@ -1,4 +1,4 @@
-function Breadcrumb({ $app, initialState }) {
+export default function Breadcrumb({ $app, initialState }) {
     this.state = initialState;
 
     this.$target = document.createElement('nav');

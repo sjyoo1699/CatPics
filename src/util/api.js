@@ -1,6 +1,6 @@
 const API_END_POINT = '...';
 
-const request = (nodeId) => {
+export const request = (nodeId) => {
     try {
         const res = await fetch(`${API_END_POINT}/${nodeId ? nodeId : ''}`);
 
