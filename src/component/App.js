@@ -18,11 +18,20 @@ function App($app) {
         },
         //함수를 파라메터로 던지고, Nodes 내에서 click 발생시 이 함수를 호출하게 함.
         //이러면 Nodes 내에선 click 후 어떤 로직이 일어날지 알아야 할 필요가 없음.
-        onClick: (node) => {
-            if(node.type === 'DIRECTORY') {
-
-            } else if(node.type === 'FILE') {
-
+        onClick: async (node) => {
+            try {
+                if(node.type === 'DIRECTORY') {
+                    const nextNodes = await request(node.id);
+                    this.setState({
+                        ...this.state,
+                        depth: [...this.state.depth, node],
+                        nodes: nextNodes
+                    })
+                } else if(node.type === 'FILE') {
+                    //이미지 보기 처리
+                }
+            } catch(e) {
+                //에러처리
             }
         }
     });
